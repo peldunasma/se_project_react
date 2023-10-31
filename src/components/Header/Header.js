@@ -1,39 +1,29 @@
 import "./Header.css";
-import logo from "../../images/Logo.svg";
-import avatar from "../../images/Avatar.svg";
+// import logo from "../../images/Logo.svg";
+// import avatar from "../../images/Avatar.svg";
 
-const Header = ({ onCreateModal }) => {
+const Header = () => {
   console.log("Header");
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
 
   return (
-    <header class="header">
-    <div class="header__logo">
-      <div>
-        <img src="#" class="header__logo" alt="" />
+    <header className="header">
+      <div className="header__logo">
+        <div>
+          <img src={require("../images/Logo.svg").default} alt="logo" />
+        </div>
+        <div>Date</div>
       </div>
-      <div class="header__date-location">{currentDate}, Florida</div>
-    </div>
-    <div class="header__content-right">
-      <div>
-        <button
-          class="header__add-button"
-          type="button"
-        >
-          + Add clothes
-        </button>
+      <div className="header__avatar-logo">
+        <div>
+          <button type="text"> Add New Clothes</button>
+        </div>
+        <div>Name</div>
+        <div>
+          <img src="./images/Avatar.svg" alt="logo" />
+        </div>
       </div>
-      <div class="header__name">Matthew Peldunas</div>
-      <div className="header__avatar">
-        <img src={avatar} class="header__avatar" alt="avatar" />
-      </div>
-    </div>
-  </header>
+    </header>
   );
 };
 
 export default Header;
-   

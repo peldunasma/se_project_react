@@ -1,62 +1,22 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 60px;
-    padding: 0 20px;
-  }
   
-  .header__logo {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  padding: 20px;
+}
+
+.header__logo{
+  display: flex; 
+  gap: 20px;
+  align-items: center; 
+}
+
+.header__avatar-logo{
+  display: flex; 
+  gap: 20px;
+  align-items: center; 
+}
   
-  .header__date-location {
-    color: #000;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  
-  .header__context-right {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  
-  .header__add-button {
-    border: 0;
-    padding: 5px 20px 5px 20px;
-    background-color: transparent;
-    color: #000;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    cursor: pointer;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .header__add-button:hover {
-    opacity: 0.4;
-  }
-  
-  .header__name {
-    color: #000;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.2;
-    text-align: center;
-  }
-  
-  .header__avatar {
-    padding-left: 12px;
-    max-width: 40px;
-    max-height: 40px;
-  }
+   
