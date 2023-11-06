@@ -1,5 +1,4 @@
 .header {
-  
   display: flex; 
   justify-content: space-between;
   align-items: center;
@@ -13,10 +12,51 @@
   align-items: center; 
 }
 
+.header__date-location {
+  color: #000;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+}
+
 .header__avatar-logo{
   display: flex; 
   gap: 20px;
   align-items: center; 
 }
-  
+
+.header__add-button {
+  color: #000;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; 
+  border: 0; 
+  padding-right: 20px; 
+  background-color: transparent;
+  cursor: pointer; 
+}
+
+.header__add-button:hover {
+  opacity: 0.4;
+}
+
+.header__author{
+  color: #000;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}  
+
+.header__avatar {
+  padding-left: 12px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
    

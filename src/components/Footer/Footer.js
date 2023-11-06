@@ -1,3 +1,5 @@
+import "./Footer.css";
+
 const footer = () => {
     return <footer className="footer">
       <div>

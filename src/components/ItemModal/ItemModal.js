@@ -1,7 +1,4 @@
 const ItemModal = ({selectedCard, onClose}) => {
-
-    console.log('item modal')
-
     return (
         <div className={`modal`}>
           <div className="modal__content">
