@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-const footer = () => {
+const Footer = () => {
     return <footer className="footer">
       <div>
         Developed by Matthew Peldunas
@@ -11,4 +11,4 @@ const footer = () => {
     </footer>;
   }
 
-  export default footer; 
+  export default Footer; 

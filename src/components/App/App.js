@@ -25,11 +25,6 @@ function App() {
     setActiveModal("preview")
     setSelectedCard(card);
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onAddItem({ name, imageUrl, weather });
-  // };
   
   useEffect(() => {
   getForcastWeather().then((data) => {
