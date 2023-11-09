@@ -25,12 +25,14 @@ function App() {
     setActiveModal("preview")
     setSelectedCard(card);
   };
+
   
   useEffect(() => {
   getForcastWeather().then((data) => {
     const temperature = parseWeatherData(data);
     setTemp(temperature)
-  });
+  })
+  .catch(console.error);
 }, []);
 
   return (
@@ -66,10 +68,12 @@ function App() {
             Select the weather type
             </p>
           <div>
+            <label>
             <div>
               <input 
               className="modal__radio-button"
               type="radio" 
+              name="testing"
               id="hot" 
               value="hot" 
               />
@@ -77,26 +81,33 @@ function App() {
                 Hot
               </label>
             </div>
+            </label>
+            <label>
             <div>
               <input
               className="modal__radio-button"
                type="radio" 
+               name="testing"
                id="warm" 
                value="warm" />
               <label>
                 Warm
               </label>
             </div>
+            </label>
+            <label>
             <div>
               <input
               className="modal__radio-button"
                type="radio" 
+               name="testing"
                id="cold" 
                value="cold" />
               <label>
                 Cold
                 </label>
             </div>
+            </label>
           </div>
         </ModalWithForm>
       )}
