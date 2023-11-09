@@ -9,7 +9,6 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getForcastWeather, parseWeatherData } from "../../util/weatherApi";
 
 function App() {
-  const weatherTemp = "756° F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0)
@@ -26,6 +25,11 @@ function App() {
     setActiveModal("preview")
     setSelectedCard(card);
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   onAddItem({ name, imageUrl, weather });
+  // };
   
   useEffect(() => {
   getForcastWeather().then((data) => {

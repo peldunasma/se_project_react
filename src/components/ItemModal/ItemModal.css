@@ -1,3 +1,48 @@
-
+.modal__item-content {
+    position: relative;
+    background-color: white;
+    max-width: 498px;
+    max-height: 610px;
+    width: 100%;
+    border-radius: 16px;
+  }
+  
+  .modal__item-close-button {
+    background: url(../../images/Close-button-white.svg) no-repeat center;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .modal_item-img {
+    max-width: 498px;
+    max-height: 610px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+  }
+  
+  .modal__item-description {
+    padding: 20px;
+  }
+  
+  .modal__item-name {
+    font-family: "Cabinet Grotesk", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    padding-bottom: 12px;
+  }
+  
+  .modal__item-weather {
+    font-family: "Cabinet Grotesk", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  
   
   

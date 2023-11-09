@@ -1,15 +1,19 @@
 import "./Header.css";
-// import logo from "../../images/Logo.svg";
-// import avatar from "../../images/Avatar.svg";
 
 const Header = ({onCreateModal}) => {
+
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <header className="header">
       <div className="header__logo">
         <div>
           <img src={require("../../images/Logo.svg").default} alt="logo" className="App-logo" />
         </div>
-        <div className="header__date-location">Date, New Jersey</div>
+        <div className="header__date-location">{currentDate}, New Jersey</div>
       </div>
       <div className="header__avatar-logo">
         <div>
