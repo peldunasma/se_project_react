@@ -1,17 +1,28 @@
+import "./ItemModal.css"
+
 const ItemModal = ({selectedCard, onClose}) => {
     return (
         <div className={`modal`}>
           <div className="modal__content">
-          <button type="button" onClick={onClose}>
-          Close
+          <button
+          className="modal__item-close-button" 
+          type="button" 
+          onClick={onClose}>
         </button>
-            <img src={selectedCard.link} />
-            <div>{selectedCard.name}</div>
-            <div> Weather: {selectedCard.weather}</div>
+            <img 
+            className="modal_item-img"
+            src={selectedCard.link} 
+            alt={selectedCard.name}
+            />
+            <div className="modal__item-description">
+            <div className="modal__item-name">{selectedCard.name}</div>
+            <div className="modal__item-weather"> 
+              Weather: {selectedCard.weather}
+              </div>
+          </div>
           </div>
         </div>
-    )
-
-}
+    );
+};
 
 export default ItemModal
