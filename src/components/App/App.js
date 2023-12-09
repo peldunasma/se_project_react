@@ -11,7 +11,7 @@ import { getForcastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { deleteItem, getItems, addItem } from "../../utils/api"
+import { addItem } from "../../utils/api"
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
