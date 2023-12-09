@@ -2,7 +2,7 @@ import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/constants";
 
 
-const WeatherCard = ({day, type, weatherTemp = ''}) => {
+const WeatherCard = ({day, type, weatherTemp = '', currentTemperatureUnit}) => {
     //filters through each item
     const imageSrc = weatherOptions.filter((i) => {
         return i.day === day && i.type === type
@@ -12,7 +12,7 @@ const WeatherCard = ({day, type, weatherTemp = ''}) => {
 
     return(
         <section className='weather' id='weather'>
-          <div className="weather_info">{weatherTemp}°F</div>
+          <div className="weather_info">{weatherTemp}°{currentTemperatureUnit}</div>
           <img src={imageSrcUrl} alt={type} className="weather_image" /> 
         </section>
     )
