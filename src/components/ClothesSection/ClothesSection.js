@@ -19,7 +19,7 @@ function ClothesSection({ onSelectCard, handleCreateModal, clothingItems }) {
         {clothingItems.map((item) => {
           return (
             <ItemCard
-              key={item.id}
+              key={item?._id ?? item?.id}
               item={item}
               onSelectCard={onSelectCard}
             />

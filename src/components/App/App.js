@@ -11,7 +11,7 @@ import { getForcastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { addItem } from "../../utils/api"
+import { deleteItem, getItems, addItem } from "../../utils/api"
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -36,19 +36,37 @@ function App() {
   const onAddItem = ({name, imageUrl, weather}) => {
     addItem({name, imageUrl, weather})
       .then((data) => {
-        console.log(data)
         setClothingItems([data, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((error) => {
-        console.error(error.status);
+      .catch((err) => {
+        console.error(err.status);
       });
+  };
+
+  const handleDeleteCard = () => {
+    deleteItem(selectedCard)
+      .then(() => {
+        setClothingItems(clothingItems.filter((cards) => cards._id !== selectedCard._id));
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     getForcastWeather()
@@ -58,7 +76,8 @@ function App() {
       })
       .catch(console.error);
   }, []);
-console.log(clothingItems)
+
+
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider
@@ -70,7 +89,7 @@ console.log(clothingItems)
             <Main
               weatherTemp={temp}
               onSelectCard={handleSelectedCard}
-              temp={temp}
+              clothingItems={clothingItems}
             />
           </Route>
           <Route path="/profile">
@@ -91,7 +110,11 @@ console.log(clothingItems)
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal 
+          selectedCard={selectedCard} 
+          onClose={handleCloseModal}
+          handleDeleteCard={handleDeleteCard} 
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>

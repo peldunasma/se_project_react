@@ -44,6 +44,21 @@
     font-weight: 700;
     line-height: 24px;
   }
+
+  .modal__item-delete-button {
+    font-family: "CabinetGrotesk-Bold", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #ff4d00;
+    border: none;
+    background-color: transparent;
+    left: 350px;
+    top: -50px;
+    position: relative;
+  }
+  .modal__item-delete-button:hover {
+    cursor: pointer;
+  }
   
   
   
