@@ -14,7 +14,7 @@ const ToggleSwitch = () => {
   const {currentTemperatureUnit, handleToggleSwitchChange} = useContext(CurrentTemperatureUnitContext)
   console.log(currentTemperatureUnit);
   return (
-    <lable className="switch">
+    <label className="switch">
       <input type="checkbox" className="switch__box" onChange={handleToggleSwitchChange} />
       <span
         className={
@@ -25,7 +25,7 @@ const ToggleSwitch = () => {
       ></span>
       <p className={`switch__temp-F ${currentTemperatureUnit === 'F' && "switch__active"}`}>F</p>
       <p className={`switch__temp-C ${currentTemperatureUnit === 'C' && "switch__active"}`}>C</p>
-    </lable>
+    </label>
   );
 };
 
