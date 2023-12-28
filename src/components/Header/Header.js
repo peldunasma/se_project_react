@@ -4,7 +4,7 @@ import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-const Header = ({onCreateModal}) => {
+const Header = ({onCreateModal, temp}) => {
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -19,7 +19,7 @@ const Header = ({onCreateModal}) => {
           <img src={logo} alt="logo" className="App-logo" />
           </Link>
         </div>
-        <div className="header__date-location">{currentDate}, New Jersey</div>
+        <div className="header__date-location">{currentDate}, {temp.city} </div>
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch/>
@@ -34,7 +34,7 @@ const Header = ({onCreateModal}) => {
         </div>
         <Link  to="/profile" className="header__author">Terrence Tegegne</Link>
         <div>
-          <img className="header__avatar" src={avatar} alt="logo" />
+          <img className="header__avatar" src={avatar} alt="avatar" />
         </div>
       </div>
     </header>

@@ -7,8 +7,8 @@ import Profile from "../Profile/Profile";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
-import { getForcastWeather, parseWeatherData } from "../../utils/weatherApi";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { getForcastWeather, parseWeatherData} from "../../utils/weatherApi";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { deleteItem, getItems, addItem } from "../../utils/api"
@@ -71,15 +71,27 @@ function App() {
   useEffect(() => {
     getForcastWeather()
       .then((data) => {
-        const temperature = parseWeatherData(data);
-        setTemp(temperature);
+        const weatherData = parseWeatherData(data);
+        setTemp(weatherData);
       })
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+    const handleEscClose = (e) => {  // define the function inside useEffect not to lose the reference on rerendering
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {  // don't forget to add a clean up function for removing the listener
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);  // watch activeModal here
+
 
   return (
-    <div>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -117,7 +129,6 @@ function App() {
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
-    </div>
   );
 }
 
