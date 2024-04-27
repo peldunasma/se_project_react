@@ -4,7 +4,6 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForcastWeather, parseWeatherData} from "../../utils/weatherApi";
@@ -40,7 +39,7 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => {
-        console.error(err.status);
+        console.error(err);
       });
   };
 
