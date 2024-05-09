@@ -1,108 +1,118 @@
-.modal{
-    position: fixed; 
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0; 
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0,0,0,0.5); 
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__content{
-    background-color: white;
-    max-width: 496px;
-    width: 100%;
-    border-radius: 20px;
-    padding: 34px 36px; 
-    position: relative;
-    max-height: 436px;
-    height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+.modal__content {
+  background-color: white;
+  max-width: 496px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 34px 36px;
+  position: relative;
+  max-height: 436px;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .modal__close-button {
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    background-image: url(../../images/Close-button.svg);
-    width: 20px;
-    height: 20px;
-    border: none;
-    cursor: pointer;  
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  background-image: url(../../images/Close-button.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
 }
 
-.modal__title{
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    margin-top: 28px;
-    margin-left: 28px;  
+.modal__title {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-top: 28px;
+  margin-left: 28px;
 }
 
 .modal__form {
-    margin-left: 28px; 
-    margin-right: 28px;
-  }
-  
-  .modal__submit-button {
-    margin-top: 34px;
-    width: 124px;
-    height: 36px;
-    color: white;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    border-radius: 4px;
-    background-color: #000;
-    border: 1px;
-    cursor: pointer;
-  }
-  
-  .modal__submit-button:hover {
-    opacity: 0.5;
-  }
-  
-  .modal__submit-button:disabled {
-    background-color: rgba(0, 0, 0, 0.3);
-    cursor: default;
-  }
-  
-  .modal__label {
-    display: flex;
-    flex-direction: column;
-    color: black;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    gap: 8px;
-  }
-  
-  .modal__input {
-    color: rgba(0, 0, 0, 0.5);
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    margin-bottom: 24px;
-    border-style: none;
-    border-bottom: 1px solid black;
-    
-  }
-  
-  .modal__radio-button-title{
-    font-weight: bold;
-  }
-  
-  .modal__radio-button {
-    height: 16px;
-    width: 16px;
-    color: rgba(0, 0, 0, 0.5);
-  }
+  margin-left: 28px;
+  margin-right: 28px;
+}
+
+.modal__submit-button {
+  margin-top: 34px;
+  width: 124px;
+  height: 36px;
+  color: white;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 4px;
+  background-color: #000;
+  border: 1px;
+  cursor: pointer;
+}
+
+.modal__submit-button:hover {
+  opacity: 0.5;
+}
+
+.modal__submit-button:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  gap: 8px;
+}
+
+.modal__input {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 24px;
+  border-style: none;
+  border-bottom: 1px solid black;
+}
+
+.modal__radio-button-title {
+  font-weight: bold;
+}
+
+.modal__radio-button {
+  height: 16px;
+  width: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__switch {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #fff;
+  border-style: none;
+  cursor: pointer;
+  margin-left: 10px;
+}

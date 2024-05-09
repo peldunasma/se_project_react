@@ -35,7 +35,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
   const filterCards = clothingItems.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
-
+ 
   return (
     <main className="main">
       <WeatherCard

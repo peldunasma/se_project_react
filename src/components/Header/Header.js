@@ -3,8 +3,13 @@ import logo from "../../images/logo.svg";
 import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
-const Header = ({onCreateModal, temp}) => {
+const Header = ({
+  onCreateModal, 
+  handleRegister, 
+  handleLogin,
+}) => {
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -19,7 +24,7 @@ const Header = ({onCreateModal, temp}) => {
           <img src={logo} alt="logo" className="App-logo" />
           </Link>
         </div>
-        <div className="header__date-location">{currentDate}, {temp.city} </div>
+        <div className="header__date-location">{currentDate}, New York </div>
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch/>
@@ -32,11 +37,33 @@ const Header = ({onCreateModal, temp}) => {
             + Add clothes
             </button>
         </div>
-        <Link  to="/profile" className="header__author">Terrence Tegegne</Link>
+        <NavLink to="/profile">
+          <p className="header__author">Terrence Tegegne</p>
+        </NavLink>
         <div>
-          <img className="header__avatar" src={avatar} alt="avatar" />
+          <img 
+          className="header__avatar" 
+          src={avatar} 
+          alt="avatar" 
+          />
         </div>
       </div>
+          <>
+            <button
+              className="nav__register-button"
+              type="button"
+              onClick={handleRegister}
+            >
+              <div className="header__sign-up">Sign up</div>
+            </button>
+            <button
+              className="nav__login-button"
+              type="button"
+              onClick={handleLogin}
+            >
+              <div className="header__log-in">Log in</div>
+            </button>
+          </>
     </header>
   );
 };
