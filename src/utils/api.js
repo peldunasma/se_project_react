@@ -1,6 +1,5 @@
 export const baseUrl = "http://localhost:3001";
 
-
 export const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
@@ -9,7 +8,6 @@ export const checkResponse = (res) => {
   }
 };
 
-// GET Items
 export const getItems = () => {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
@@ -19,29 +17,27 @@ export const getItems = () => {
   }).then(checkResponse);
 };
 
-// POST Items
-export const addItem = ({ name, imageUrl, weather }) => {
+export const addItem = ({ name, weather, imageUrl }, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ 
-      name, 
-      imageUrl, 
+    body: JSON.stringify({
+      name,
+      imageUrl,
       weather,
-     }),
+    }),
   }).then(checkResponse);
 };
 
-// DELETE Items
-export const deleteItem = (selectedCard) => {
-  return fetch(`${baseUrl}/items/${selectedCard._id} `, {
+export const deleteItem = (_id, token) => {
+  return fetch(`${baseUrl}/items/${_id} `, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 };
-
-

@@ -1,6 +1,6 @@
 import { baseUrl, checkResponse } from "./api";
 
-const register = (email, name, password, avatar) => {
+const register = ({name, email, password, avatar}) => {
     return fetch(`${baseUrl}/signup`, {
       method: "POST",
       headers: {
@@ -8,25 +8,23 @@ const register = (email, name, password, avatar) => {
       },
       body: JSON.stringify({
         name,
-        avatar,
         email,
         password,
+        avatar,
       }),
     }).then(checkResponse);
   };
 
-  const login = (email, password) => {
-    return fetch(`${baseUrl}/login`, {
+  export const login = ({ email, password }) => {
+    return fetch(`${baseUrl}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify({ email, password }),
     }).then(checkResponse);
   };
+  
 
   const auth = {
     register,

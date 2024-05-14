@@ -1,7 +1,11 @@
 //import logo from "../../logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
-import { getForcastWeather, parseWeatherData} from "../../utils/weatherApi";
+import { 
+  getForcastWeather,
+  parseWeatherData
+} from "../../utils/weatherApi";
+
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min"
 import Header from "../Header/Header";
@@ -14,7 +18,13 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../RegisterModal/RegisterModal";
 import auth from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { deleteItem, getItems, addItem } from "../../utils/api"
+import { 
+  deleteItem, 
+  getItems, 
+  addItem, 
+  checkResponse, 
+  getUser,
+} from "../../utils/api"
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -104,10 +114,10 @@ function App() {
       });
   };
 
-  const handleDeleteCard = () => {
-    deleteItem(selectedCard)
+  const handleDeleteCard = (item) => {
+    deleteItem(item)
       .then(() => {
-        setClothingItems(clothingItems.filter((cards) => cards._id !== selectedCard._id));
+        setClothingItems(clothingItems.filter((cards) => cards._id !== item._id));
         handleCloseModal();
       })
       .catch((err) => console.log(err));
@@ -156,49 +166,45 @@ function App() {
 
 
   return (
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <Header 
-        onCreateModal={handleCreateModal} 
-        temp={temp} 
-        />
-        <Switch>
-          <Route exact path="/">
-            <Main
-              weatherTemp={temp}
-              onSelectCard={handleSelectedCard}
-              clothingItems={clothingItems}
-            />
-          </Route>
-          {/* Wrap Ducks in ProtectedRoute and pass isLoggedIn as a prop. */}
-          <Route path="/profile">
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <Header onCreateModal={handleCreateModal} temp={temp} />
+      <Switch>
+        <Route exact path="/">
+          <Main
+            weatherTemp={temp}
+            onSelectCard={handleSelectedCard}
+            clothingItems={clothingItems}
+          />
+        </Route>
+        {/* Wrap Ducks in ProtectedRoute and pass isLoggedIn as a prop. */}
+        <Route path="/profile">
           <ProtectedRoute isLoggedIn={isLoggedIn}>
-            <Profile 
+            <Profile
               clothingItems={clothingItems}
               handleCreateModal={handleCreateModal}
               onSelectCard={handleSelectedCard}
             />
-            </ProtectedRoute>
-            </Route>
-        </Switch>
-
-        <Footer />
-        {activeModal === "create" && (
-          <AddItemModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
-            onAddItem={onAddItem}
-          />
-        )}
-        {activeModal === "preview" && (
-          <ItemModal 
-          selectedCard={selectedCard} 
+          </ProtectedRoute>
+        </Route>
+      </Switch>
+      <Footer />
+      {activeModal === "create" && (
+        <AddItemModal
+          handleCloseModal={handleCloseModal}
+          isOpen={activeModal === "create"}
+          onAddItem={onAddItem}
+        />
+      )}
+      {activeModal === "preview" && (
+        <ItemModal
+          selectedCard={selectedCard}
           onClose={handleCloseModal}
-          handleDeleteCard={handleDeleteCard} 
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
+          handleDeleteCard={handleDeleteCard}
+        />
+      )}
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
