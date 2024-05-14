@@ -1,14 +1,10 @@
 export const baseUrl = "http://localhost:3001";
 
 export const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
+  return res.ok ? res.json() : Promise.reject(`Error ${res.status}`);
 };
 
-export const getItems = () => {
+const getItems = () => {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: {
@@ -17,7 +13,7 @@ export const getItems = () => {
   }).then(checkResponse);
 };
 
-export const addItem = ({ name, weather, imageUrl }, token) => {
+const addItem = ({ name, weather, imageUrl }, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -26,14 +22,14 @@ export const addItem = ({ name, weather, imageUrl }, token) => {
     },
     body: JSON.stringify({
       name,
-      imageUrl,
       weather,
+      imageUrl,
     }),
   }).then(checkResponse);
 };
 
-export const deleteItem = (_id, token) => {
-  return fetch(`${baseUrl}/items/${_id} `, {
+ const deleteItem = (_id, token) => {
+  return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -41,3 +37,12 @@ export const deleteItem = (_id, token) => {
     },
   }).then(checkResponse);
 };
+// ADD SIGNIN AND SIGNUP FETCHES
+
+const api = {
+  getItems,
+  addItem,
+  deleteItem,
+};
+
+export default api;
