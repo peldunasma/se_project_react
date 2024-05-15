@@ -58,9 +58,9 @@ const LoginModal = ({
         />
       </label>
       <div className="modal__buttons">
-        <button className="modal__submit-button" type="submit">
+        {/* <button className="modal__submit-button" type="submit">
             Log In
-        </button>
+        </button> */}
       <button className="modal__switch" type="button" onClick={switchToLogin}>
         or Register
       </button> 

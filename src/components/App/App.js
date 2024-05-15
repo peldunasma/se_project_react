@@ -7,13 +7,13 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
-import RegisterModal from "../RegisterModal/RegisterModal";
-import LoginModal from "../RegisterModal/RegisterModal";
+import SignUpModal from "../SignUpModal/SignUpModal";
+import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 
 // Hooks and Routes
 import { useState, useEffect } from "react";
-import { Route, Routes, Navigate} from "react-router-dom";
+import { Switch, Route, Navigate } from "react-router-dom";
 import api from "../../utils/api";
 
 //Utils
@@ -93,7 +93,7 @@ function App() {
 
   const handleLogin = (email, password) => {
     auth
-      .signIn({ email, password })
+      .login({ email, password })
       .then((res) => {
         handleLoginModal({ email, password });
         localStorage.setItem("jwt", res.token);
@@ -150,6 +150,7 @@ function App() {
       .getItems()
       .then((data) => {
         setClothingItems(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -161,6 +162,7 @@ function App() {
       .then((data) => {
         const weatherData = parseWeatherData(data);
         setTemp(weatherData);
+        console.log(weatherData);
       })
       .catch(console.error);
   }, []);
@@ -202,21 +204,29 @@ function App() {
           <Header
             onCreateModal={handleCreateModal}
             temp={temp}
-            handleSignUpModal={handleSignUpModal}
-            handleLoginModal={handleLoginModal}
+            handleSignUp={handleSignUpModal}
+            handleLogin={handleLoginModal}
             isLoggedIn={isLoggedIn}
           />
-          <Routes>
+          <Switch>
             <Route
               exact
               path="/"
-              element={
+              render={(props) => (
                 <Main
                   weatherTemp={temp}
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
+                  {...props}
                 />
-              }
+              )}
+              //   render={
+              //     <Main
+              //       weatherTemp={temp}
+              //       onSelectCard={handleSelectedCard}
+              //       clothingItems={clothingItems}
+              //     />
+              //   }
             />
             <Route
               path="/profile"
@@ -229,24 +239,32 @@ function App() {
                 />
               }
             />
-          </Routes>
-        <Footer />
-        {activeModal === "create" && (
-          <AddItemModal
+          </Switch>
+          <Footer />
+          {activeModal === "login" && (
+            <LoginModal
             handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
-            //onAddItem={onAddItem}
-          />
-        )}
-        {activeModal === "preview" && (
-          <ItemModal
-            selectedCard={selectedCard}
-            onClose={handleCloseModal}
-            //handleDeleteCard={handleDeleteCard}
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </CurrentUserContext.Provider>
+            onSubmit={handleLogin}
+            isOpen={activeModal === "login"}
+            //switchToLogin={handleLoginToggle}
+            />
+          )}
+          {activeModal === "create" && (
+            <AddItemModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "create"}
+              onAddItem={handleItemSubmit}
+            />
+          )}
+          {activeModal === "preview" && (
+            <ItemModal
+              selectedCard={selectedCard}
+              onClose={handleCloseModal}
+              //handleDeleteCard={handleDeleteCard}
+            />
+          )}
+        </CurrentTemperatureUnitContext.Provider>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

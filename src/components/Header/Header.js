@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const Header = ({
   onCreateModal, 
-  handleRegister, 
+  handleSignUp, 
   handleLogin,
 }) => {
 
@@ -52,7 +52,7 @@ const Header = ({
             <button
               className="nav__register-button"
               type="button"
-              onClick={handleRegister}
+              onClick={handleSignUp}
             >
               <div className="header__sign-up">Sign up</div>
             </button>
@@ -61,7 +61,7 @@ const Header = ({
               type="button"
               onClick={handleLogin}
             >
-              <div className="header__log-in">Log in</div>
+              <div className="header__log-in" >Log in</div>
             </button>
           </>
     </header>

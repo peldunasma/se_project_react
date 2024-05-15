@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({
+const SignUpModal = ({
   handleCloseModal,
   onSubmit,
   isOpen,
@@ -98,4 +98,4 @@ const RegisterModal = ({
     </ModalWithForm>
   );
 };
-export default RegisterModal;
+export default SignUpModal;

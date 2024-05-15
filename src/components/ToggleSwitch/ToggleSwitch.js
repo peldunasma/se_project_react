@@ -4,7 +4,6 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 const ToggleSwitch = () => {
   const {currentTemperatureUnit, handleToggleSwitchChange} = useContext(CurrentTemperatureUnitContext)
-  console.log(currentTemperatureUnit);
   return (
     <label className="switch">
       <input type="checkbox" className="switch__box" onChange={handleToggleSwitchChange} />
