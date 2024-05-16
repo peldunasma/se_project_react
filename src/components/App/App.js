@@ -1,4 +1,3 @@
-//import logo from "../../logo.svg";
 import "./App.css";
 
 // Components
@@ -7,13 +6,13 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
-import SignUpModal from "../SignUpModal/SignUpModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 
 // Hooks and Routes
 import { useState, useEffect } from "react";
-import { Switch, Route, Navigate } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import api from "../../utils/api";
 
 //Utils
@@ -23,7 +22,6 @@ import auth from "../../utils/auth";
 // Contexts
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-//import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min"
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -82,9 +80,7 @@ function App() {
         handleSignUpModal({ email, password, name, avatar });
         handleCloseModal();
         setCurrentUser({ email, password, name, avatar });
-        console.log(currentUser);
         setIsLoggedIn(true);
-        alert("Sign Up Successful. Please Log In");
       })
       .catch((err) => {
         console.log(err);
@@ -162,25 +158,24 @@ function App() {
       .then((data) => {
         const weatherData = parseWeatherData(data);
         setTemp(weatherData);
-        console.log(weatherData);
       })
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
-    const handleEscClose = (e) => {
-      // define the function inside useEffect not to lose the reference on rerendering
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-    document.addEventListener("keydown", handleEscClose);
-    return () => {
-      // don't forget to add a clean up function for removing the listener
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, [activeModal]); // watch activeModal here
+  // useEffect(() => {
+  //   if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+  //   const handleEscClose = (e) => {
+  //     // define the function inside useEffect not to lose the reference on rerendering
+  //     if (e.key === "Escape") {
+  //       handleCloseModal();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", handleEscClose);
+  //   return () => {
+  //     // don't forget to add a clean up function for removing the listener
+  //     document.removeEventListener("keydown", handleEscClose);
+  //   };
+  // }, [activeModal]); // watch activeModal here
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -243,10 +238,16 @@ function App() {
           <Footer />
           {activeModal === "login" && (
             <LoginModal
-            handleCloseModal={handleCloseModal}
-            onSubmit={handleLogin}
-            isOpen={activeModal === "login"}
-            //switchToLogin={handleLoginToggle}
+              handleCloseModal={handleCloseModal}
+              onSubmit={handleLogin}
+              isOpen={activeModal === "login"}
+            />
+          )}
+          {activeModal === "signup" && (
+            <RegisterModal
+              handleCloseModal={handleCloseModal}
+              onSubmit={handleSignUp}
+              isOpen={activeModal === "signup"}
             />
           )}
           {activeModal === "create" && (

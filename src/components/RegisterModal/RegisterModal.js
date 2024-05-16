@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const SignUpModal = ({
-  handleCloseModal,
-  onSubmit,
-  isOpen,
-  switchToLogin,
-}) => {
+const RegisterModal = ({ handleCloseModal,onSubmit,isOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -27,6 +22,19 @@ const SignUpModal = ({
     setPassword(e.target.value);
   };
 
+  // Resets input fields
+
+  useEffect(() => {
+    if (isOpen) {
+      setEmail("");
+      setPassword("");
+      setName("");
+      setAvatarUrl("");
+    }
+  }, [isOpen]);
+
+  //Submit Function
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ email, password, name, avatar });
@@ -35,17 +43,18 @@ const SignUpModal = ({
   return (
     <ModalWithForm
       title="Sign up"
-      buttonText="Sign up"
       onClose={handleCloseModal}
       isOpen={isOpen}
       className="register"
       onSubmit={handleSubmit}
+      buttonText="Sign Up"
     >
       <label className="modal__label">
         Email*
         <input
-          className="modal__input modal__input_type_email"
+          className="modal__input"
           type="text"
+          name="email"
           minLength="1"
           maxLength="30"
           placeholder="Email"
@@ -56,8 +65,9 @@ const SignUpModal = ({
       <label className="modal__label">
         Password*
         <input
-          className="modal__input modal__input_type_password"
-          type="password"
+          className="modal__input"
+          type="text"
+          name="password"
           minLength="1"
           maxLength="30"
           placeholder="Password"
@@ -68,8 +78,9 @@ const SignUpModal = ({
       <label className="modal__label">
         Name
         <input
-          className="modal__input modal__input_type_name"
+          className="modal__input"
           type="text"
+          name="name"
           minLength="1"
           maxLength="30"
           placeholder="Name"
@@ -78,24 +89,17 @@ const SignUpModal = ({
         />
       </label>
       <label className="modal__label">
-        Avatar URL
+        Avatar
         <input
-          className="modal__input modal__input_type_avatar"
+          className="modal__input"
           type="url"
+          minLength="1"
           placeholder="Avatar URL"
           value={avatar}
           onChange={handleAvatarUrlChange}
         />
       </label>
-      <div className="modal__buttons">
-        <button className="modal__submit-button" type="submit">
-            Next
-        </button>
-      <button className="modal__switch" type="button" onClick={switchToLogin}>
-        or Log in
-      </button> 
-      </div>
     </ModalWithForm>
   );
 };
-export default SignUpModal;
+export default RegisterModal;

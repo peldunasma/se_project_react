@@ -5,7 +5,6 @@ const LoginModal = ({
   handleCloseModal,
   onSubmit,
   isOpen,
-  switchToLogin,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,8 +35,9 @@ const LoginModal = ({
       <label className="modal__label">
         Email
         <input
-          className="modal__input modal__input_type_email"
-          type="text"
+          className="modal__input"
+          type="email"
+          name="email"
           minLength="1"
           maxLength="30"
           placeholder="Email"
@@ -48,8 +48,9 @@ const LoginModal = ({
       <label className="modal__label">
         Password*
         <input
-          className="modal__input modal__input_type_password"
-          type="password"
+          className="modal__input"
+          type="text"
+          name="password"
           minLength="1"
           maxLength="30"
           placeholder="Password"
@@ -57,14 +58,6 @@ const LoginModal = ({
           onChange={handlePasswordChange}
         />
       </label>
-      <div className="modal__buttons">
-        {/* <button className="modal__submit-button" type="submit">
-            Log In
-        </button> */}
-      <button className="modal__switch" type="button" onClick={switchToLogin}>
-        or Register
-      </button> 
-      </div>
     </ModalWithForm>
   );
 };

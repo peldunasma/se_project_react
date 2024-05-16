@@ -3,12 +3,15 @@ import logo from "../../images/logo.svg";
 import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
+
 
 const Header = ({
   onCreateModal, 
   handleSignUp, 
   handleLogin,
+  isLoggedIn
 }) => {
 
   const currentDate = new Date().toLocaleString("default", {
@@ -16,18 +19,22 @@ const Header = ({
     day: "numeric",
   });
 
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <header className="header">
       <div className="header__logo">
         <div>
           <Link to="/">
-          <img src={logo} alt="logo" className="App-logo" />
+          <img src={logo} alt="logo" />
           </Link>
         </div>
-        <div className="header__date-location">{currentDate}, New York </div>
+        <div>{currentDate}, New York </div>
       </div>
-      <div className="header__avatar-logo">
+      <div className="header__info-container">
         <ToggleSwitch/>
+        {isLoggedIn ? (
+          <>
         <div>
           <button
            className="header__add-button"
@@ -37,33 +44,39 @@ const Header = ({
             + Add clothes
             </button>
         </div>
-        <NavLink to="/profile">
-          <p className="header__author">Terrence Tegegne</p>
-        </NavLink>
+        <Link 
+        to="/profile"
+        style={{ textDecoration: "none", color: "black" }}
+        >
+        {currentUser?.name}
+        </Link>
         <div>
           <img 
+          src={currentUser?.avatar}
           className="header__avatar" 
-          src={avatar} 
-          alt="avatar" 
+          alt="avatar logo" 
           />
         </div>
-      </div>
+      </>
+    ) : (
           <>
             <button
-              className="nav__register-button"
+              className="header__button"
               type="button"
               onClick={handleSignUp}
             >
-              <div className="header__sign-up">Sign up</div>
+             Sign up
             </button>
             <button
-              className="nav__login-button"
+              className="header__button"
               type="button"
               onClick={handleLogin}
             >
-              <div className="header__log-in" >Log in</div>
+              Log in
             </button>
           </>
+        )}
+        </div>
     </header>
   );
 };

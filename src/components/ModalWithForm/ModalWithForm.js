@@ -2,7 +2,7 @@ import "./ModalWithForm.css";
 
 const ModalWithForm = ({
   children,
-  buttonText = "Add garment",
+  buttonText,
   title,
   onClose,
   name,
@@ -10,7 +10,7 @@ const ModalWithForm = ({
   onSubmit,
 }) => {
   return (
-    <div className={`modal modal_type_${name}`}>
+    <div className={`modal modal_type_${name} ${isOpen ? " modal__opened" : ""}`}>
       <div className="modal__content">
         <button 
         className="modal__close-button"
