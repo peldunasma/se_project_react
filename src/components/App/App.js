@@ -12,7 +12,8 @@ import Profile from "../Profile/Profile";
 
 // Hooks and Routes
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Navigate, Switch, Route } from "react-router-dom";
+// import { Switch, Route } from "react-router-dom";
 import api from "../../utils/api";
 
 //Utils
@@ -225,14 +226,23 @@ function App() {
             />
             <Route
               path="/profile"
-              element={
+              render={(props) => (
                 <Profile
-                  clothingItems={clothingItems}
+                clothingItems={clothingItems}
                   onSelectCard={handleSelectedCard}
                   handleCreateModal={handleCreateModal}
                   handleEditProfileModal={handleEditProfileModal}
+                  {...props}
                 />
-              }
+              )}
+              // element={
+              //   <Profile
+              //     clothingItems={clothingItems}
+              //     onSelectCard={handleSelectedCard}
+              //     handleCreateModal={handleCreateModal}
+              //     handleEditProfileModal={handleEditProfileModal}
+              //   />
+              // }
             />
           </Switch>
           <Footer />
