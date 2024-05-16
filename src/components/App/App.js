@@ -88,7 +88,7 @@ function App() {
       });
   };
 
-  const handleLogin = (email, password) => {
+  const handleLogin = ({email, password}) => {
     auth
       .login({ email, password })
       .then((res) => {
