@@ -1,4 +1,4 @@
-.profile__logo {
+.sidebar__container {
     font-family: "Familjen Grotesk", sans-serif;
     display: flex;
     margin: 0 0 0px 40px;
@@ -8,10 +8,10 @@
     gap: 16px;
   }
   
-  .profile__avatar-image {
+  .sidebar__avatar-image {
     border-radius: 50%;
     background-color: black;
   }
-  .profile__avatar-name {
+  .sidebar__avatar-name {
     align-self: center;
   }
