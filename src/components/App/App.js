@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 
 // Hooks and Routes
 import { useState, useEffect } from "react";
-import { Navigate, Switch, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 // import { Switch, Route } from "react-router-dom";
 import api from "../../utils/api";
 
@@ -204,47 +204,31 @@ function App() {
             handleLogin={handleLoginModal}
             isLoggedIn={isLoggedIn}
           />
-          <Switch>
-            <Route
-              exact
+          <Routes>
+            <Route 
+            exact
               path="/"
-              render={(props) => (
+              element={
                 <Main
                   weatherTemp={temp}
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
-                  {...props}
+                  
                 />
-              )}
-              //   render={
-              //     <Main
-              //       weatherTemp={temp}
-              //       onSelectCard={handleSelectedCard}
-              //       clothingItems={clothingItems}
-              //     />
-              //   }
+              }
             />
             <Route
               path="/profile"
-              render={(props) => (
+              element={
                 <Profile
-                clothingItems={clothingItems}
+                  clothingItems={clothingItems}
                   onSelectCard={handleSelectedCard}
                   handleCreateModal={handleCreateModal}
                   handleEditProfileModal={handleEditProfileModal}
-                  {...props}
                 />
-              )}
-              // element={
-              //   <Profile
-              //     clothingItems={clothingItems}
-              //     onSelectCard={handleSelectedCard}
-              //     handleCreateModal={handleCreateModal}
-              //     handleEditProfileModal={handleEditProfileModal}
-              //   />
-              // }
+              }
             />
-          </Switch>
+          </Routes>
           <Footer />
           {activeModal === "login" && (
             <LoginModal

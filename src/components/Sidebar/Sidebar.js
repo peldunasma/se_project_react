@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 import "./Sidebar.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function SideBar(setIsLoggedIn) {
-  const navigate = NavLink();
+const SideBar = ({setIsLoggedIn}) => {
+const navigate = useNavigate();
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
@@ -38,5 +38,5 @@ function SideBar(setIsLoggedIn) {
       </button>
     </div>
   );
-}
+};
 export default SideBar;
