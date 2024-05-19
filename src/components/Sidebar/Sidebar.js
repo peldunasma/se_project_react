@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SideBar = ({setIsLoggedIn}) => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
