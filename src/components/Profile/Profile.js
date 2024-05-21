@@ -3,11 +3,20 @@ import "./Profile.css";
 import SideBar from "../Sidebar/Sidebar";
 import ClothesSection from "../ClothesSection/ClothesSection"; 
 
-function Profile ({ onSelectCard, handleCreateModal, clothingItems }) {
+function Profile ({ 
+    onSelectCard, 
+    handleCreateModal, 
+    clothingItems, 
+    setIsLoggedIn, 
+    handleEditProfileModal,
+    }) {
 
     return (
         <div className = "profile">
-            <SideBar />
+            <SideBar 
+            setIsLoggedIn={setIsLoggedIn}
+            handleEditProfile={handleEditProfileModal}
+            />
             <ClothesSection 
                 onSelectCard={onSelectCard}
                 handleCreateModal={handleCreateModal}

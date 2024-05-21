@@ -13,12 +13,11 @@ import Profile from "../Profile/Profile";
 // Hooks and Routes
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-// import { Switch, Route } from "react-router-dom";
-import api from "../../utils/api";
 
 //Utils
 import { getForcastWeather, parseWeatherData } from "../../utils/weatherApi";
 import auth from "../../utils/auth";
+import api from "../../utils/api";
 
 // Contexts
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -83,9 +82,7 @@ function App() {
         setCurrentUser({ email, password, name, avatar });
         setIsLoggedIn(true);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
 
   const handleLogin = ({email, password}) => {
@@ -114,7 +111,7 @@ function App() {
 
   //Item Handlers
 
-  const handleDeleteItem = (selectedCard) => {
+  const handleDeleteCard = (selectedCard) => {
     const token = localStorage.getItem("jwt");
     api
       .deleteItem(selectedCard._id, token)
@@ -147,7 +144,6 @@ function App() {
       .getItems()
       .then((data) => {
         setClothingItems(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -226,7 +222,6 @@ function App() {
                   handleCreateModal={handleCreateModal}
                   handleEditProfileModal={handleEditProfileModal}
                   setIsLoggedIn={setIsLoggedIn}
-                  isLoggedIn={isLoggedIn}
                 />
               }
             />
@@ -257,7 +252,7 @@ function App() {
             <ItemModal
               selectedCard={selectedCard}
               onClose={handleCloseModal}
-              //handleDeleteCard={handleDeleteCard}
+              deleteCard={handleDeleteCard}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

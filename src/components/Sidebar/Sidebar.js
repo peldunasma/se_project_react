@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SideBar = ({setIsLoggedIn}) => {
+const SideBar = ({setIsLoggedIn, handleEditProfile}) => {
   const navigate = useNavigate();
   const currentUser = useContext(CurrentUserContext);
   return (
@@ -12,21 +12,21 @@ const SideBar = ({setIsLoggedIn}) => {
       <div className="sidebar__container">
         <img
           src={currentUser?.avatar}
-          alt="sidebar__avatar"
-          className="sidebar__avatar-image"
+          alt="avatar"
+          className="sidebar__profile-avatar"
         />
-        <p className="sidebar__avatar-name">
-            {currentUser?.name}
-        </p>
+        <p className="sidebar__profile-name">{currentUser?.name}</p>
       </div>
+      <div className="sidebar__profile-info">
       <button 
-      className="sidebar__edit-data"
+      className="sidebar__profile-button"
       type="text"
+      onClick={handleEditProfile}
       >
         Change profile data
       </button>
       <button 
-      className="sidebar__logout"
+      className="sidebar__profile-button"
       type="text"
       onClick={() => {
         navigate("/");
@@ -36,6 +36,7 @@ const SideBar = ({setIsLoggedIn}) => {
       >
         Log out
       </button>
+    </div>
     </div>
   );
 };
