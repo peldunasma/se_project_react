@@ -5,6 +5,7 @@ const LoginModal = ({
   handleCloseModal,
   onSubmit,
   isOpen,
+  switchToSignup
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +59,9 @@ const LoginModal = ({
           onChange={handlePasswordChange}
         />
       </label>
+      <p className="modal__switch" onClick={switchToSignup}>
+        or Sign Up
+      </p>
     </ModalWithForm>
   );
 };

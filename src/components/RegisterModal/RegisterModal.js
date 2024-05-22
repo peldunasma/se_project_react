@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ handleCloseModal,onSubmit,isOpen }) => {
+const RegisterModal = ({ handleCloseModal,onSubmit,isOpen, switchToLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -99,6 +99,9 @@ const RegisterModal = ({ handleCloseModal,onSubmit,isOpen }) => {
           onChange={handleAvatarUrlChange}
         />
       </label>
+      <p className="modal__switch" onClick={switchToLogin}>
+        or Log in
+      </p>
     </ModalWithForm>
   );
 };

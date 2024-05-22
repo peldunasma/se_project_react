@@ -5,6 +5,13 @@ import { useContext } from "react";
 const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
 
   const currentUser = useContext(CurrentUserContext);
+  // Checking if the current user is the owner of the current clothing item
+  const isOwn = selectedCard.owner === currentUser._id;
+
+  // Creating a variable which you'll then set in `className` for the delete button
+const itemDeleteButton = (
+  `modal__item-delete-button ${isOwn ? 'modal__item-delete-button_visible' : 'modal__item-delete-button_hidden'}`
+);
 
   return (
     <div className={`modal`}>
@@ -25,7 +32,7 @@ const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
             Weather: {selectedCard.weather}
           </div>
           <button
-            className="modal__item-delete-button"
+            className={itemDeleteButton}
             type=" button"
             onClick={() => deleteCard(selectedCard)}
           >

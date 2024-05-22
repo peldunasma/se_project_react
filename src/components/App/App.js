@@ -9,6 +9,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 // Hooks and Routes
 import { useState, useEffect } from "react";
@@ -107,6 +109,12 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleSwitch = () => {
+    activeModal === "login" 
+    ? setActiveModal("signup")
+    : setActiveModal("login");
   };
 
   //Item Handlers
@@ -216,6 +224,7 @@ function App() {
             <Route
               path="/profile"
               element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Profile
                   clothingItems={clothingItems}
                   onSelectCard={handleSelectedCard}
@@ -223,6 +232,7 @@ function App() {
                   handleEditProfileModal={handleEditProfileModal}
                   setIsLoggedIn={setIsLoggedIn}
                 />
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -232,6 +242,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               onSubmit={handleLogin}
               isOpen={activeModal === "login"}
+              switchToSignup={handleSwitch}
             />
           )}
           {activeModal === "signup" && (
@@ -239,6 +250,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               onSubmit={handleSignUp}
               isOpen={activeModal === "signup"}
+              switchToLogin={handleSwitch}
             />
           )}
           {activeModal === "create" && (
@@ -253,6 +265,13 @@ function App() {
               selectedCard={selectedCard}
               onClose={handleCloseModal}
               deleteCard={handleDeleteCard}
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfileModal
+              handleCloseModal={handleCloseModal}
+              handleEditProfile={handleEditProfile}
+              isOpen={activeModal === "edit"}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
