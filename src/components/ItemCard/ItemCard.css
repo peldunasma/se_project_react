@@ -44,3 +44,17 @@
     border: 0.5px solid; 
     
 }
+
+.card__like-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .card__like-button_img {
+    width: 20px;
+    height: 20px;
+  }

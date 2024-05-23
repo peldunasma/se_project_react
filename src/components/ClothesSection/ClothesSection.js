@@ -2,6 +2,7 @@ import React from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
+
 function ClothesSection({ onSelectCard, handleCreateModal, clothingItems }) {
   return (
     <div className="clothes__items">

@@ -37,12 +37,31 @@ const addItem = ({ name, weather, imageUrl }, token) => {
     },
   }).then(checkResponse);
 };
-// ADD SIGNIN AND SIGNUP FETCHES
+
+const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
+
+const removeCardLike= (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
 
 const api = {
   getItems,
   addItem,
   deleteItem,
+  addCardLike,
+  removeCardLike,
 };
 
 export default api;
