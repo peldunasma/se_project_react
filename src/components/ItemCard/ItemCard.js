@@ -13,7 +13,6 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
     <div>
     <div className="card_element">
       <div className="card_name">{item.name}</div>
-      {isLoggedIn ? (
           <button
             className="card__like-button"
             onClick={() => onCardLike(item._id, isLiked)}
@@ -24,9 +23,6 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
               className="card__like-button_img"
             />
           </button>
-        ) : (
-          ""
-        )}
         </div>
         <img
         src={item.imageUrl}
