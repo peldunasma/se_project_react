@@ -257,6 +257,7 @@ function App() {
                   onSelectCard={handleSelectedCard}
                   handleCreateModal={handleCreateModal}
                   handleEditProfileModal={handleEditProfileModal}
+                  isLoggedIn={isLoggedIn}
                   setIsLoggedIn={setIsLoggedIn}
                   onCardLike={handleCardLike}
                 />

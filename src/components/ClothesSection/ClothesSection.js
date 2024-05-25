@@ -3,7 +3,13 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
 
-function ClothesSection({ onSelectCard, handleCreateModal, clothingItems }) {
+function ClothesSection({ 
+  onSelectCard, 
+  handleCreateModal, 
+  clothingItems,
+  isLoggedIn,
+  onCardLike, 
+}) {
   return (
     <div className="clothes__items">
       <div className="clothes__items-heading-wrapper">
@@ -23,6 +29,8 @@ function ClothesSection({ onSelectCard, handleCreateModal, clothingItems }) {
               key={item?._id ?? item?.id}
               item={item}
               onSelectCard={onSelectCard}
+              isLoggedIn={isLoggedIn}
+              onCardLike={onCardLike}
             />
           );
         })}

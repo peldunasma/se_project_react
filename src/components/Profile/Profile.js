@@ -9,6 +9,8 @@ function Profile ({
     clothingItems, 
     setIsLoggedIn, 
     handleEditProfileModal,
+    onCardLike,
+    isLoggedIn,
     }) {
 
     return (
@@ -21,6 +23,8 @@ function Profile ({
                 onSelectCard={onSelectCard}
                 handleCreateModal={handleCreateModal}
                 clothingItems={clothingItems}
+                onCardLike={onCardLike}
+                isLoggedIn={isLoggedIn}
             />
         </div>
     );

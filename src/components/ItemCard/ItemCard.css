@@ -1,60 +1,61 @@
-.card_section{
-    margin-top: 40px; 
+.card_section {
+  margin-top: 40px;
 }
 
-.card_section-title{
-    color: #000;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal; 
-    margin-left: 40px;
-    margin-bottom: 34px; 
+.card_section-title {
+  color: #000;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 40px;
+  margin-bottom: 34px;
 }
 
 .card_element {
-    position: relative;
-  }
-
-.card_items{
-    display: flex; 
-    flex-wrap: wrap;
-    gap: 17px; 
-    justify-content: center; 
-    margin-top: 34px; 
+  position: relative;
+  top: 40px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
-.card_name{
-    position: absolute;
-    margin-left: 40%;
-    top: 5%;
-    padding: 5px;
-    border-radius: 4px;
-    color: rgba(0, 0, 0, 0.6);
-    background-color: white;
-    font-family: "Cabinet Grotesk", Arial, sans-serif; 
-    font-weight: 700; 
+.card_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  justify-content: center;
+  margin-top: 34px;
 }
 
-.card_image{
-    width: 328px;
-    height: 328px;
-    border-radius: 20px;
-    border: 0.5px solid; 
-    
+.card_name {
+  padding: 2px 12px;
+  background: white;
+  color: #00000099;
+  font-size: 20px;
+  font-family: "CabinetGrotesk-Medium", serif;
+  font-weight: bold;
+}
+
+.card_image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 .card__like-button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
+  background: transparent;
+  border: none;
+  padding: 0;
+  height: 20px;
+  cursor: pointer;
+}
 
-  .card__like-button_img {
-    width: 20px;
-    height: 20px;
-  }
+.card__like-button_img {
+  width: 20px;
+  height: 20px;
+}

@@ -10,13 +10,8 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
   const isLiked = item.likes.some((id) => id === currentUser._id);
 
   return (
+    <div>
     <div className="card_element">
-      <img
-        src={item.imageUrl}
-        alt={item.name}
-        className="card_image"
-        onClick={() => onSelectCard(item)}
-      />
       <div className="card_name">{item.name}</div>
       {isLoggedIn ? (
           <button
@@ -32,6 +27,13 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
         ) : (
           ""
         )}
+        </div>
+        <img
+        src={item.imageUrl}
+        alt={item.name}
+        className="card_image"
+        onClick={() => onSelectCard(item)}
+      />
     </div>
   );
 };

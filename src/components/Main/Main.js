@@ -4,7 +4,13 @@ import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./Main.css";
 
-function Main({ weatherTemp, onSelectCard, clothingItems, onCardLike }) {
+function Main({ 
+  weatherTemp, 
+  onSelectCard, 
+  clothingItems, 
+  onCardLike, 
+  isLoggedIn, 
+}) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
@@ -51,7 +57,13 @@ function Main({ weatherTemp, onSelectCard, clothingItems, onCardLike }) {
         </div>
         <div className="card_items">
           {filterCards.map((item) => (
-            <ItemCard item={item} key={item._id} onSelectCard={onSelectCard} />
+            <ItemCard 
+            item={item} 
+            key={item._id} 
+            onSelectCard={onSelectCard}
+            onCardLike={onCardLike}
+            isLoggedIn={isLoggedIn}
+             />
           ))}
         </div>
       </section>

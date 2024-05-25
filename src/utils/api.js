@@ -47,7 +47,7 @@ const addCardLike = (id, token) => {
   }).then(checkResponse);
 };
 
-const removeCardLike= (id, token) => {
+const removeCardLike = (id, token) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
