@@ -4,7 +4,7 @@ import heartLikedIcon from "../../images/heart-liked.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
+const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
 
   const isLiked = item.likes.some((id) => id === currentUser._id);
@@ -15,7 +15,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
       <div className="card_name">{item.name}</div>
           <button
             className="card__like-button"
-            onClick={() => onCardLike(item._id, isLiked)}
+            onClick={() => onCardLike( item._id, isLiked)}
           >
             <img
               src={isLiked ? heartLikedIcon : heartIcon}

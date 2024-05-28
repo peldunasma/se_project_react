@@ -146,7 +146,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = (id, isLiked ) => {
     const token = localStorage.getItem("jwt");
     // Check if this card is not currently liked
     !isLiked
