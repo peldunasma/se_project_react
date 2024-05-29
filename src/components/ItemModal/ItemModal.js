@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const ItemModal = ({ selectedCard, onClose, deleteCard }) => {
+const ItemModal = ({ selectedCard, onClose, deleteCard, isOpen }) => {
 
   const currentUser = useContext(CurrentUserContext);
   // Checking if the current user is the owner of the current clothing item
@@ -14,7 +14,7 @@ const itemDeleteButton = (
 );
 
   return (
-    <div className={`modal`}>
+    <div className={`modal ${isOpen ? " modal_opened" : ""}`}>
       <div className="modal__item-content">
         <button
           className="modal__item-close-button"
@@ -31,6 +31,7 @@ const itemDeleteButton = (
           <div className="modal__item-weather">
             Weather: {selectedCard.weather}
           </div>
+          {isOwn ? (
           <button
             className={itemDeleteButton}
             type=" button"
@@ -38,6 +39,7 @@ const itemDeleteButton = (
           >
             Delete Item
           </button>
+          ) : null}
         </div>
       </div>
     </div>
