@@ -46,10 +46,10 @@ function Main({
   return (
     <main className="main">
       <WeatherCard
-        day={false}
+        day={true}
         type="sunny"
         weatherTemp={temp}
-        currentTemperatureUnit={currentTemperatureUnit}
+        // currentTemperatureUnit={currentTemperatureUnit}
       />
       <section className="card_section" id="card-section">
         <div className="card_section-title">
