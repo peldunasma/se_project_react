@@ -29,6 +29,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText="Add garment"
     >
       <label className="modal__label">
         Name
@@ -56,7 +57,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
         />
       </label>
       <p className="modal__radio-button-title">Select the weather type</p>
-      <div>
+      <div className="modal__radio-buttons">
         <div>
           <label>
             <input

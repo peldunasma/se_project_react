@@ -101,6 +101,11 @@
 
 .modal__radio-button-title {
   font-weight: bold;
+  margin-top: 5px;  
+}
+
+.modal__radio-buttons{
+  margin-bottom: 20px; 
 }
 
 .modal__radio-button {
