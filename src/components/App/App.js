@@ -93,6 +93,10 @@ function App() {
       .then((res) => {
         handleLoginModal({ email, password });
         localStorage.setItem("jwt", res.token);
+        return auth.checkToken(res.token);
+      })
+      .then((user) => {
+        setCurrentUser(user);
         handleCloseModal();
         setIsLoggedIn(true);
       })
