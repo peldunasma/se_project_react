@@ -11,7 +11,8 @@ const Header = ({
   onCreateModal, 
   handleSignUp, 
   handleLogin,
-  isLoggedIn
+  isLoggedIn,
+  location,
 }) => {
 
   const currentDate = new Date().toLocaleString("default", {
@@ -29,7 +30,7 @@ const Header = ({
           <img src={logo} alt="logo" />
           </Link>
         </div>
-        <div>{currentDate}, New York </div>
+        <div>{currentDate}, {location} </div>
       </div>
       <div className="header__info-container">
         <ToggleSwitch/>

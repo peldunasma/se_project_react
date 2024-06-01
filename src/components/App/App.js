@@ -32,6 +32,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [location, setLocation] = useState("");
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
@@ -193,6 +194,7 @@ function App() {
       .then((data) => {
         const weatherData = parseWeatherData(data);
         setTemp(weatherData);
+        setLocation(data.name);
       })
       .catch(console.error);
   }, []);
@@ -226,7 +228,6 @@ function App() {
   }, []);
 
   return (
-    <div>
       <CurrentUserContext.Provider value={currentUser}>
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -237,6 +238,7 @@ function App() {
             handleSignUp={handleSignUpModal}
             handleLogin={handleLoginModal}
             isLoggedIn={isLoggedIn}
+            location={location}
           />
           <Routes>
             <Route 
@@ -310,7 +312,6 @@ function App() {
           )}
         </CurrentTemperatureUnitContext.Provider>
       </CurrentUserContext.Provider>
-    </div>
   );
 }
 
