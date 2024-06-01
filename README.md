@@ -1,4 +1,20 @@
 # Getting Started with Create React App
+WTWR (What to Wear?)
+
+About the project
+
+This application is a fullstack weather application that allows users to register and log into an account. Users may add clothing items of their choosing with a name, image, and weather type of the item. The application filters through the clothes based on the weather type and the user's current location and displays them. Furthermore, you can like/favorite the clothes that have been added and if you decide that you dont want a certain item, than you can delete it.
+
+npm run start — to launch the server
+
+npm run dev — to launch the server with the hot reload feature
+
+Back End
+
+Repo Link: (https://github.com/peldunasma/se_project_express)
+Design
+
+Figma Design
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
