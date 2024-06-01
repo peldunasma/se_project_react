@@ -1,8 +1,8 @@
 //https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
 import { checkResponse } from "./api";
 
-const longitude = 10.9;
-const latitude = 44.34;
+const longitude = -115.13;
+const latitude = 36.17;
 const APIkey = "65bd70c77b2834525bfd81480ec0c5fc";
 
 
