@@ -21,6 +21,7 @@ import { getForcastWeather, parseWeatherData } from "../../utils/weatherApi";
 import auth from "../../utils/auth";
 import api from "../../utils/api";
 
+
 // Contexts
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -235,7 +236,7 @@ function App() {
           <Header
             onCreateModal={handleCreateModal}
             temp={temp}
-            handleSignUp={handleSignUpModal}
+            handleSignUpModal={handleSignUpModal}
             handleLogin={handleLoginModal}
             isLoggedIn={isLoggedIn}
             location={location}
@@ -283,7 +284,7 @@ function App() {
           {activeModal === "signup" && (
             <RegisterModal
               handleCloseModal={handleCloseModal}
-              onSubmit={handleSignUp}
+              handleSignUp={handleSignUp}
               isOpen={activeModal === "signup"}
               switchToLogin={handleSwitch}
             />
