@@ -236,7 +236,7 @@ function App() {
           <Header
             onCreateModal={handleCreateModal}
             temp={temp}
-            handleSignUpModal={handleSignUpModal}
+            handleSignUp={handleSignUpModal}
             handleLogin={handleLoginModal}
             isLoggedIn={isLoggedIn}
             location={location}
