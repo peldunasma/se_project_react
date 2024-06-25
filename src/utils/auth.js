@@ -1,4 +1,8 @@
-import { baseUrl, checkResponse } from "./api";
+import { checkResponse } from "./api";
+
+const baseUrl = (process.env.NODE_ENV === "production"
+  ? "https://api.wtwr.xseller.com"
+  : "http://localhost:3001");
 
 export const signUp = ({name, email, password, avatar}) => {
     return fetch(`${baseUrl}/signup`, {
